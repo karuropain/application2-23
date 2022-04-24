@@ -4,7 +4,10 @@ root to: "homes#top"
 
 get 'homes/about' => 'homes#about', as: :about
 
-resources :post_images, only: [:new, :index, :show]#create,destroyを14章で消した
+resources :post_images, only: [:new, :create, :index, :show, :destroy] do
+  resources :post_comments, only: [:create, :destroy]
+
+end
 resources :users, only: [:show, :edit, :update]
 
 end
